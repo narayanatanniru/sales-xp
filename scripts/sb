@@ -1,0 +1,57 @@
+#!/usr/bin/env bash
+#
+# Branch-aware Supabase CLI wrapper.
+#
+# Usage: ./scripts/sb <any supabase CLI args>
+#
+# Automatically links the CLI to the correct project based on the current
+# git branch: main → prod, anything else → dev.
+# Demands a typed PROD confirmation for any prod-mutating command.
+#
+
+set -euo pipefail
+
+# --- Project refs (replace with your actual Supabase project refs) ---
+PROD_REF="${PROD_REF:-YOUR_PROD_PROJECT_REF}"
+DEV_REF="${DEV_REF:-YOUR_DEV_PROJECT_REF}"
+
+BRANCH=$(git rev-parse --abbrev-ref HEAD 2>/dev/null || echo "unknown")
+
+if [[ "$BRANCH" == "main" ]]; then
+  TARGET_REF="$PROD_REF"
+  ENV="PROD"
+else
+  TARGET_REF="$DEV_REF"
+  ENV="DEV"
+fi
+
+echo "📌 Branch: $BRANCH → $ENV (ref: $TARGET_REF)"
+
+# Re-link if needed
+CURRENT_REF=""
+if [[ -f supabase/.temp/project-ref ]]; then
+  CURRENT_REF=$(cat supabase/.temp/project-ref)
+fi
+
+if [[ "$CURRENT_REF" != "$TARGET_REF" ]]; then
+  echo "🔗 Linking Supabase CLI to $ENV project..."
+  supabase link --project-ref "$TARGET_REF"
+fi
+
+# Safety: confirm prod-mutating commands
+MUTATING_COMMANDS="deploy|push|set|delete|reset"
+if [[ "$ENV" == "PROD" ]] && echo "$*" | grep -qE "$MUTATING_COMMANDS"; then
+  if [[ "${SB_CONFIRM:-}" != "PROD" ]]; then
+    echo ""
+    echo "⚠️  You are about to run a MUTATING command on PRODUCTION."
+    echo "    Command: supabase $*"
+    echo ""
+    read -rp "Type PROD to confirm: " CONFIRM
+    if [[ "$CONFIRM" != "PROD" ]]; then
+      echo "Aborted."
+      exit 1
+    fi
+  fi
+fi
+
+supabase "$@" --project-ref "$TARGET_REF"

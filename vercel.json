@@ -1,0 +1,16 @@
+{
+  "rewrites": [
+    { "source": "/(.*)", "destination": "/index.html" }
+  ],
+  "headers": [
+    {
+      "source": "/(.*)",
+      "headers": [
+        {
+          "key": "Content-Security-Policy",
+          "value": "frame-ancestors 'self' *.force.com *.salesforce.com *.lightning.force.com"
+        }
+      ]
+    }
+  ]
+}

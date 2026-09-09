@@ -1,0 +1,16 @@
+#!/usr/bin/env bash
+#
+# post-checkout hook: reminds the developer which Supabase environment
+# the current branch targets.
+#
+
+BRANCH=$(git rev-parse --abbrev-ref HEAD 2>/dev/null || echo "unknown")
+
+if [[ "$BRANCH" == "main" ]]; then
+  echo ""
+  echo "⚠️  You are on main — this branch targets PRODUCTION."
+  echo "   Use ./scripts/sb for all Supabase commands."
+  echo ""
+else
+  echo "📌 Branch '$BRANCH' → targets DEV Supabase project."
+fi

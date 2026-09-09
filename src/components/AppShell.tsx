@@ -16,6 +16,9 @@ import {
 } from 'lucide-react';
 
 import HomePage from './HomePage';
+import ChallengesPage from './ChallengesPage';
+import BattlesPage from './BattlesPage';
+import RewardZonePage from './RewardZonePage';
 
 /**
  * AppShell — main layout with sidebar navigation and header.
@@ -207,11 +210,11 @@ export default function AppShell() {
         {/* Page content */}
         <main className="flex-1 overflow-auto p-6">
           {currentPage === 'home' && <HomePage />}
-          {currentPage === 'challenges' && <PlaceholderPage title="Challenges" desc="Race to the target — first to hit it wins the prize." />}
-          {currentPage === 'battles' && <PlaceholderPage title="The Arena" desc="1v1 and team battles on your KPIs." />}
+          {currentPage === 'challenges' && <ChallengesPage />}
+          {currentPage === 'battles' && <BattlesPage />}
           {currentPage === 'scoreboard' && <PlaceholderPage title="Scoreboard" desc="Live rankings across your organization." />}
           {currentPage === 'power-wheel' && <PlaceholderPage title="Power Wheel" desc="Event-based prize wheel." />}
-          {currentPage === 'reward-zone' && <PlaceholderPage title="Reward Zone" desc="Spend your coins on gift cards, experiences, and more." />}
+          {currentPage === 'reward-zone' && <RewardZonePage />}
           {currentPage === 'settings' && <PlaceholderPage title="Settings" desc="Profile, avatar, security, history." />}
           {currentPage === 'teams' && <PlaceholderPage title="Teams" desc="Team management and requests." />}
           {currentPage === 'earnie-assistant' && <PlaceholderPage title="Sales Assistant" desc="AI-powered assistant for leadership." />}

@@ -21,6 +21,8 @@ import BattlesPage from './BattlesPage';
 import RewardZonePage from './RewardZonePage';
 import AdminPanel from './AdminPanel';
 import EarnieAssistant from './EarnieAssistant';
+import ScoreboardPage from './ScoreboardPage';
+import SettingsPage from './SettingsPage';
 
 /**
  * AppShell — main layout with sidebar navigation and header.
@@ -214,10 +216,10 @@ export default function AppShell() {
           {currentPage === 'home' && <HomePage />}
           {currentPage === 'challenges' && <ChallengesPage />}
           {currentPage === 'battles' && <BattlesPage />}
-          {currentPage === 'scoreboard' && <PlaceholderPage title="Scoreboard" desc="Live rankings across your organization." />}
+          {currentPage === 'scoreboard' && <ScoreboardPage />}
           {currentPage === 'power-wheel' && <PlaceholderPage title="Power Wheel" desc="Event-based prize wheel." />}
           {currentPage === 'reward-zone' && <RewardZonePage />}
-          {currentPage === 'settings' && <PlaceholderPage title="Settings" desc="Profile, avatar, security, history." />}
+          {currentPage === 'settings' && <SettingsPage />}
           {currentPage === 'teams' && <PlaceholderPage title="Teams" desc="Team management and requests." />}
           {currentPage === 'earnie-assistant' && <EarnieAssistant />}
           {currentPage === 'admin' && <AdminPanel />}

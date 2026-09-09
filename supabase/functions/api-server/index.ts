@@ -11,7 +11,7 @@ import { Hono } from 'jsr:@hono/hono';
 import { cors } from 'jsr:@hono/hono/cors';
 import { createClient, type SupabaseClient } from 'jsr:@supabase/supabase-js';
 
-const app = new Hono();
+const app = new Hono().basePath('/api-server');
 app.use('*', cors({ origin: '*' }));
 
 // ─── Supabase Admin Client ─────────────────────────────────────────────────────

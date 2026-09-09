@@ -18,14 +18,14 @@ import { execSync } from 'child_process';
 // Replace with your own Supabase project values once provisioned.
 const PROJECTS = {
   prod: {
-    ref: 'YOUR_PROD_PROJECT_REF',
-    url: 'https://YOUR_PROD_PROJECT_REF.supabase.co',
-    anonKey: 'YOUR_PROD_ANON_KEY',
+    ref: 'decopeaekuaxidabejwe',
+    url: 'https://decopeaekuaxidabejwe.supabase.co',
+    anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRlY29wZWFla3VheGlkYWJlandlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODg5NzIzNTIsImV4cCI6MjEwNDU0ODM1Mn0.qV5Z7OFkJZI4dWiQZcgFrwD3-STn5PufyRqOYFyM8rM',
   },
   dev: {
-    ref: 'YOUR_DEV_PROJECT_REF',
-    url: 'https://YOUR_DEV_PROJECT_REF.supabase.co',
-    anonKey: 'YOUR_DEV_ANON_KEY',
+    ref: 'decopeaekuaxidabejwe',
+    url: 'https://decopeaekuaxidabejwe.supabase.co',
+    anonKey: 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImRlY29wZWFla3VheGlkYWJlandlIiwicm9sZSI6ImFub24iLCJpYXQiOjE3ODg5NzIzNTIsImV4cCI6MjEwNDU0ODM1Mn0.qV5Z7OFkJZI4dWiQZcgFrwD3-STn5PufyRqOYFyM8rM',
   },
 };
 
